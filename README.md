@@ -168,8 +168,8 @@ scripts/
 .github/workflows/
   ci-cd.yml                      # CI/CD pipeline definition
 
-diagrams/
-  hybrid-cloud-automation-architecture.png
+![Architecture Diagram](diagrams/hybrid-cloud-automation-architecture.png)
+
 ```
 
 ---
