@@ -1,0 +1,32 @@
+---
+- name: Ensure APT cache is up to date (Ubuntu)
+  apt:                          
+    update_cache: yes
+  become: yes
+
+- name: Upgrade all packages
+  apt:                          
+    upgrade: dist
+  become: yes
+
+- name: Install base packages
+  apt:
+    name:
+      - curl
+      - git
+      - htop
+      - ufw
+    state: present
+  become: yes
+
+- name: Configure uncomplicated firewall (UFW)
+  ufw:
+    state: enabled
+    rule: allow
+    port: "{{ item }}"
+    proto: tcp
+  with_items:
+    - 22
+    - 80
+    - 443
+  become: yes

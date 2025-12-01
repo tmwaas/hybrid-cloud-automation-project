@@ -1,0 +1,6 @@
+region           = "us-east-1"
+key_name         = "hybrid-cloud-automation"
+instance_type    = "t3.micro"
+allowed_ssh_cidr = "YOUR_EC2_IP/32"
+vpc_cidr_block   = "10.0.0.0/16"
+public_cidr      = "10.0.1.0/24"

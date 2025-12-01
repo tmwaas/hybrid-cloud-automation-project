@@ -1,0 +1,5 @@
+- hosts: k8s_nodes
+  become: yes
+  roles:
+    - common
+    - monitoring

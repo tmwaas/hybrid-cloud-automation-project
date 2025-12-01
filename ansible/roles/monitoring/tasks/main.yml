@@ -1,0 +1,24 @@
+---
+- name: Install k3s (simple single-node)
+  shell: |
+    curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION={{ k3s_version }} sh -
+  args:
+    creates: /usr/local/bin/k3s
+  become: yes
+
+- name: Create monitoring namespace
+  shell: |
+    k3s kubectl create namespace monitoring || true
+  become: yes
+
+- name: Deploy placeholder monitoring stack
+  shell: |
+    cat <<EOF | k3s kubectl apply -n monitoring -f -
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: monitoring-config
+    data:
+      message: "Monitoring placeholder - integrate Prometheus/Grafana here."
+    EOF
+  become: yes
