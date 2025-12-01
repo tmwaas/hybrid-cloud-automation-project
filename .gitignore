@@ -1,0 +1,6 @@
+# Terraform local cache
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+tfplan
