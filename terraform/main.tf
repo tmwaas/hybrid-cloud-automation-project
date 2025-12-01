@@ -23,9 +23,9 @@ module "network" {
 module "compute" {
   source = "./modules/compute"
 
-  vpc_id            = module.network.vpc_id
-  public_subnet_id  = module.network.public_subnet_id
-  key_name          = var.key_name
-  instance_type     = var.instance_type
-  allowed_ssh_cidr  = var.allowed_ssh_cidr
+  vpc_id           = module.network.vpc_id
+  public_subnet_id = module.network.public_subnet_id
+  key_name         = var.key_name
+  instance_type    = var.instance_type
+  allowed_ssh_cidr = var.allowed_ssh_cidr
 }
