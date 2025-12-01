@@ -2,12 +2,14 @@ name: Hybrid Cloud Automation CI/CD
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
   pull_request:
 
 jobs:
   validate:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -17,10 +19,13 @@ jobs:
         with:
           terraform_version: 1.6.6
 
-      - name: Terraform fmt
+      - name: Terraform Init (no backend)
+        run: terraform -chdir=terraform init -backend=false
+
+      - name: Terraform Format Check
         run: terraform -chdir=terraform fmt -check
 
-      - name: Terraform validate
+      - name: Terraform Validate
         run: terraform -chdir=terraform validate
 
       - name: Install Ansible
@@ -28,5 +33,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y ansible
 
-      - name: Ansible syntax check (common role)
-        run: ansible-playbook ansible/common.yml --syntax-check      
+      - name: Ansible Syntax Check (common)
+        run: ansible-playbook ansible/common.yml --syntax-check -i localhost,
+
+      - name: Ansible Syntax Check (monitoring)
+        run: ansible-playbook ansible/monitoring.yml --syntax-check -i localhost,
+
+      - name: Ansible Syntax Check (site)
+        run: ansible-playbook ansible/site.yml --syntax-check -i localhost,
+
+        
