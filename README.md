@@ -168,7 +168,9 @@ scripts/
 .github/workflows/
   ci-cd.yml                      # CI/CD pipeline definition
 
-![Architecture Diagram](https://raw.githubusercontent.com/tmwaas/hybrid-cloud-automation-project/main/diagrams/hybrid-cloud-automation-architecture.png)
+
+![Architecture Diagram](diagrams/hybrid-cloud-automation-architecture.png)
+
 
 ```
 
