@@ -36,7 +36,9 @@ This project implements a fully automated cloud-native stack using:
 - Services / Ingress (optional)
 
 **4. Helm deploys applications declaratively**
+
 **5. GitHub Actions automates validation steps**
+
 **6. Scripts provide health checks and scale logic**
 
 ---
